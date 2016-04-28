@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>dom加载</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+// var $$ = ajQuery = function(selector) {
+//     this.selector = selector;
+//     return this
+// }
+// ajQuery.fn = ajQuery.prototype = {
+//     selectorName:function(){
+//         return this.selector;
+//     },
+//     // constructor: ajQuery
+// }
+// var a = new $$("ddsff");  //实例化
+// a.selectorName() //aaa //得到选择器名字
+
+// // console.log(a.selectorName())
+
+// var b=c=d="dffffffffffffffffff"
+// c='d'
+// console.log(b)
+
+var a = b = function(d){
+	this.c = d
+	return this
+}
+b.prototype = {
+	se:"lkl"
+}
+a.prototype = {
+	se:"a"
+}
+var a1 = new a(2)
+var b1 = new b(2)
+
+console.log(a1.se)
+
+console.log(b1.se)
+
+var ajQuery = function(selector) {
+    	console.log((this instanceof ajQuery))
+    if(!(this instanceof ajQuery)){
+        return new ajQuery(selector);
+    }
+    this.selector = selector;
+    return this
+}
+
+
+
+console.log(ajQuery)
+console.log(ajQuery("dddddddddddddd").selector)
+console.log(typeof {})
+
+var dd=function(){
+	console.log(this instanceof dd)
+	if(!(this instanceof dd)){
+		return new dd();
+	}
+	this.a="112"
+	
+}
+
+console.log(dd())
+dd()
+
+</script>
+</head>
+</body>
+</html>

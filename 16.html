@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" style="" defer=""></script>  <!-- 延时执行 不保证顺序 只针对外部脚本 -->
+	<script type="text/javascript" style="" async="" =""></script> <!-- 异步执行 不保证顺序 只针对外部脚本 -->
+
+</head>
+<body >
+	
+
+
+	
+	<script type="text/javascript">
+
+	console.log(1=="1")	//先转换在比较
+	console.log(1==="1") //直接比较
+
+	var i=0,i1=0;
+	do{console.log(i);i+=2}while(i<10)
+	for(;i1<10;i1+=2){
+		console.log(i1)
+	}
+
+	var num=0;
+	out:
+	for(var i=0;i<10;i++){
+		for(var j=0;j<10;j++){
+			if(i==5&&j==5){
+				continue out;
+			}
+			num++
+		}
+	}
+	console.log(num)
+
+
+	var day=new Date().getDay()
+
+	switch(day){
+		case 0:
+			console.log("周末");
+			break;
+		case 5:
+			console.log("周五");
+			break;
+		default:
+			console.log("工作日");
+
+	}
+
+	</script>
+
+	
+</body>
+</html>

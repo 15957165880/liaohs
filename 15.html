@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+
+
+</head>
+<body style="height: 3000px">
+	
+	
+		
+	
+	<iframe src="a.html"></iframe>
+	<iframe src="b.html"></iframe>
+		
+
+	
+	<script type="text/javascript">
+	console.log(window.frames[0].document.readyState)
+	console.log(window.frames[0].a)
+	setTimeout(function () {
+		console.log(window.frames[0].a)
+		console.log(window.frames[0].document.readyState)
+	},300)
+	setTimeout(function () {
+		console.log(window.frames[1].a)
+	},300)
+	setTimeout(function () {
+		console.log(window.a)
+	},300)
+
+
+	window.moveTo()  // 高版本浏览器禁用
+	window.moveBy()	 // 高版本浏览器禁用
+	window.resizeTo()  // 高版本浏览器禁用
+	window.resizeBy()  // 高版本浏览器禁用
+
+	// var wroxWin=window.open('http://localhost:8080/a.html','wroxWindow','height=300,width=300',"resize=no")
+
+	// setTimeout(function () {
+	// 	wroxWin.resizeTo(500,500)  // 同源执行
+	// 	wroxWin.moveTo(500,500)
+	// 	setTimeout(function () {
+	// 		// wroxWin.close()
+	// 	},1000)
+	// },1000)
+
+
+	// alert(0)
+
+	// if(confirm("are you sure")){
+	// 	alert("ok")
+	// }else{
+	// 	alert("no")
+	// }
+
+	// var result = prompt("a","a")
+	// 	if(result !== null||undefined||''){
+	// 		console.log(result)
+	// 	}else{
+	// 		console.log(result)
+	// 	}
+
+	// window.print()
+	// location.replace("http://www.baidu.com")
+
+	// location.reload() // 有可能从缓存加载
+	// location.reload(true) // 从服务器加载
+
+	console.log(navigator.plugins) // 插件检测 IE无效
+	console.log(screen)
+	console.log(history)
+	console.log(document.all)
+	// history.go()
+	// history.back()
+
+
+	</script>
+
+	
+</body>
+</html>

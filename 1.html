@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+    p { color:red; margin:5px; cursor:pointer; }
+    p:hover { background:yellow; }
+    
+    .selected { color:blue; }
+    .highlight { background:yellow; }
+    
+    div {
+        background-color:#bca;
+        width:100px;
+        border:1px solid green;
+    }
+    div { color:red; }
+
+
+
+.demo{
+
+}
+
+</style>
+<script src="http://img.mukewang.com/down/540812440001e40e00000000.js" type="text/javascript"></script>
+<title>便捷的操作</title>
+</head>
+<body>
+
+
+<!-- 例一 -->
+<p>First Paragraph</p>
+<p>Second Paragraph</p>
+<p>Yet one more Paragraph</p>
+
+
+<!-- 例二 -->
+<button id="go">&raquo; Run</button>
+<div id="block">Hello!</div>
+
+
+
+<!-- 例三 -->
+<form>
+    <input type="checkbox" name="newsletter" value="Hourly" checked="checked" class="1">
+    <input type="checkbox" name="newsletter" value="Daily" class="2">
+    <input type="checkbox" name="newsletter" value="Weekly" class="3">
+    <input type="checkbox" name="newsletter" value="Monthly" checked class="1">
+    <input type="checkbox" name="newsletter" value="Yearly" class="1">
+</form>
+<div id="t"></div>
+
+<h2>132</h2>
+<h2>77</h2>
+<div class="container"><h1>453</h1></div>
+
+<div id="go1">go1</div>
+<div class="demo">demo</div>
+<script>
+	$('.container').prependTo($('h2'))
+	console.log($('h2')[0])
+    
+  //例一
+  $("p").click(function () {
+      $(this).slideUp();
+  });
+   
+   
+  
+  //例子二
+  var ifgo=true;
+
+  $("#go").click(function(){
+  	console.log(window.ifgo)
+  	
+  	if(ifgo){
+  		animate1()
+  	}else{
+  		animate2()
+  	}
+
+  	ifgo=!ifgo
+  	// init=!init
+  });
+
+  function animate1(){
+      $("#block").stop(true).animate({
+        width: "200px",
+        opacity: 0.4,
+        
+        margin:"60px",
+        fontSize: "3em",
+        borderWidth: "10px"
+      }, 500 );
+  }
+  function animate2(){
+      $("#block").stop(true).animate({
+        width: "100px",
+        opacity: 1,
+        marginLeft: 0,
+        fontSize: "1em",
+        borderWidth: "1px"
+      }, 500 );
+  }
+
+  
+  //例子三
+ var countChecked = function() {
+    var n = $( "input[class='1']" ).length;
+   $( "#t" ).text( n + (n === 1 ? " is" : " are") + " checked!" );
+};
+
+$( "input[type=checkbox]" ).on( "click", countChecked );
+
+</script>
+
+
+</body>
+</html>

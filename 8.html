@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>dom加载</title>
+</head>
+<body>
+
+<div id="id1">dsf</div>
+
+
+
+<script type="text/javascript">
+
+var o={
+	name:"liaohs",
+	sex:"male",
+	age:"29"
+}
+var a=[1,2,3]
+a.forEach(function(v,i){
+	console.log(i)
+})
+// forEach(function(){}) 针对arr
+for(var i in o){
+	console.log(i)
+	console.log(o[i])
+}
+// for(var i in arr){} 针对 arr||obj
+
+</script>
+</head>
+</body>
+</html>

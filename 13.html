@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+		<style>
+			*{margin:0;padding:0;}
+			.div1{
+				height:300px;
+			}
+			#div2{
+				height:3000px;
+				margin:10px;
+				padding:30px;
+				display:inline-block;
+			}
+		</style>
+
+</head>
+<body>
+	
+
+	<p class="class1 class2 class3 class6" my-data="my-data">class1 class2 class3</p>
+	<p class="class1 class2 class3">class1 class2 class3</p>
+
+	<input type="text" id="input1">
+	<div class="div1"></div>
+	<div id="div2">
+		div2dfdsfdsf
+	</div>
+
+	<ul id="ul">
+		<li>list item 1</li>
+		<li>list item 2</li>
+		<li>list item 3</li>
+	</ul>
+	
+	<script type="text/javascript">
+		var demo=document.getElementsByClassName("class1 class2"),
+			len=demo.length;
+
+			console.log(demo[0])
+			console.log(demo[0].classList)
+			console.log(demo[0].className)
+			console.log(demo[0].getAttribute("class"))
+			demo[0].classList.add("class4")
+			demo[0].classList.remove("class3")
+			demo[0].classList.toggle("class6")
+			console.log(demo[0].classList)
+			console.log(demo[0].getAttribute("class"))
+
+		var input1=document.getElementById("input1");
+			input1.focus();
+			console.log(document.activeElement.nodeName)
+			console.log(document.hasFocus())
+
+			console.log(document.readyState)
+
+			setTimeout(function(){console.log(document.readyState)},100)
+
+
+			console.log(demo[0].getAttribute("my-data"))
+
+			demo[0].insertAdjacentHTML("beforebegin","<p >beforebegin</p>")
+			demo[0].insertAdjacentHTML("afterbegin","<p id=\"afterbegin\">afterbegin</p>")
+
+			demo[0].insertAdjacentHTML("beforeend","<p>beforeend</p>")
+			demo[0].insertAdjacentHTML("afterend","<p>afterend</p>")
+
+			var afterbegin=document.getElementById("afterbegin");
+
+			console.log(demo[0].contains(afterbegin))  //判断是不是后代
+
+			
+			console.log(getInnerText(demo[0]))
+
+			// setInnerText(demo[0],43213)
+			console.log(getInnerText(demo[0]))
+			console.log(document.doctype)
+			function getInnerText(ele){
+				return (typeof ele.textContent == "string")?ele.textContent:ele.innerText
+			}
+			function setInnerText(ele,text){
+				if(typeof ele.textContent == "string"){
+					ele.textContent=text
+				}else{
+					ele.innerText=text
+				}
+			}
+
+			document.getElementById("div2").scrollIntoView()
+
+
+			var fnobj={}
+				fnobj.a=function(){
+					console.log("a")
+				}
+				try{fnobj.b()}catch(e){console.log(e)}
+				
+				fnobj.b=function(){
+					console.log("b")
+				}
+
+			var fnFunc=function(){
+				this.a=function(){
+					console.log("a")
+				}
+			}
+
+
+			var fn1=new fnFunc()
+			var fn2=new fnFunc()
+			console.log(fn2)
+			fn1.b=function(){
+				console.log("b1")
+			}
+			fnFunc.prototype.b=function(){
+				console.log("b")
+			}	
+
+
+			fn1.b()
+			fn2.b()
+
+			demo[0].style.fontSize="50px"
+
+		var div2=document.getElementById("div2")
+
+			console.log(div2.offsetTop)
+			console.log(div2.offsetLeft)
+			console.log(div2.offsetWidth)
+			console.log(div2.offsetHeight)
+			console.log(div2.offsetParent)
+			console.log(div2.scrollTop)
+
+			console.log(div2.parentNode)
+			console.log( div2.offsetParent == div2.parentNode)
+
+		var ul=document.getElementById("ul");
+		var iterator=document.createNodeIterator(ul,NodeFilter.SHOW_TEXT,null,false)
+		var node=iterator.nextNode()
+
+		while(node!==null){
+			console.log(node.tagName)
+			node=iterator.nextNode()
+		}
+
+
+
+		
+	</script>
+
+	
+</body>
+</html>

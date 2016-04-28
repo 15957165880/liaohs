@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        // 组合继承 js最常用的继承
+        function Fn1(name,arr){
+            this.name=name;
+            this.numbers=arr
+        }
+        Fn1.prototype.sayName=function(){
+            console.log(this.name)
+        }
+
+        Fn1.prototype.sayNumbers=function(){
+            console.log(this.numbers)
+        }
+        function Fn2(name,age,arr){
+            Fn1.call(this,name,arr) // 不继承原型 job  继承Fn1构造函数部分
+            this.age=age;
+        }
+        Fn2.prototype=new Fn1(); // 简写方式没有constructor
+        Fn2.prototype.constructor=Fn2;
+        var fn1=new Fn2("liaohs1",28,[1])
+        var fn2=new Fn2("liaohs2",29,[1])
+
+        fn1.numbers.push(4)
+        console.log(fn1)
+        console.log(typeof fn1)
+
+        fn1.sayName()
+        fn1.sayNumbers()
+        console.log(fn2)
+        fn2.sayName()
+        fn2.sayNumbers()
+
+        // 原型式继承
+        function object(o){  
+            function F(){};
+            F.prototype= o;
+            return new F() 
+        } // 把对象转成原型 无构造部分
+        var person={
+            name:"liaohs",
+            friends:["l","w"]
+        }
+        var person1={
+            name:"liaohs",
+            friends:["l","w"]
+        }
+        var anotherPerson=object(person)
+        console.log(anotherPerson)
+        anotherPerson.friends.push("v")
+        console.log(anotherPerson.friends)
+
+        var anotherPerson1=Object.create(person1)   // 把对象转成原型 无构造部分
+        console.log(anotherPerson1)
+        console.log(anotherPerson1.friends)
+
+
+        // 寄生式继承
+
+        function createAnother(o) {
+            var clone=Object.create(o); // 创建新对象
+            clone.sayHi=function(){ // 给对象添加属性  方法没有复用 效率降低
+                console.log("hi")
+            }
+            return clone;
+        }
+        var anotherPerson2=createAnother(person)
+        console.log(anotherPerson2)
+        anotherPerson2.sayHi()
+
+        function onlyPrototype(fn1,fn2){
+            var prototype=Object(fn2.prototype);
+            fn1.prototype=prototype;
+            prototype.constructor=fn1; // 指针指向fn1
+        }
+
+        // 寄生组合
+
+        function Fn3(name,arr,age){
+            Fn1.call(this,name,arr,age);
+            this.age=age;
+        }
+
+        // this is not a good idea! // 构造部分变成了原型
+        Fn3.prototype=new Fn1();
+        Fn3.prototype.constructor=Fn3;
+        Fn3.prototype.sayAge=function(){
+            console.log(this.age)
+        }
+        // this is not a good idea!
+
+        var fn3 = new Fn3()
+        console.log(fn3)
+
+        function Fn5(name,arr,age){
+            Fn1.call(this,name,arr,age);
+            this.age=age;
+        }   
+
+        onlyPrototype(Fn5,Fn1)
+        Fn5.prototype.sayAge=function(){
+            console.log(this.age)
+        }
+        var fn5=new Fn5()
+        console.log(fn5)
+        fn5.sayName()
+
+        //call 借用构造函数
+
+    </script>
+</body>
+
+</html>

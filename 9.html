@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>dom加载</title>
+</head>
+
+<body>
+    <div id="id1">dsf</div>
+    <script type="text/javascript">
+        var Observable = {
+            callbacks: [],
+            add: function(fn) {
+                this.callbacks.push(fn);
+            },
+            remove: function(i) {
+            	if(isNaN(i)||i>=this.callbacks.length){
+            		return false
+            	}
+                this.callbacks.splice(i,1)
+            },
+            fire: function() {
+                this.callbacks.forEach(function(fn) {
+                	try{
+
+                    	fn();
+                	}catch(e){}
+                })
+            }
+        }
+
+        Observable.add(function() {
+            console.log(1)
+        })
+        Observable.add(function() {
+            console.log(2)
+        })
+        Observable.add(function() {
+            console.log(3)
+        })
+        Observable.remove("a2"); // 1, 2
+         Observable.fire(); // 1, 2
+
+        //异步模式 
+
+        var a=[1,2,3]
+        var b=[4,5,6]
+        var c=b.concat(a)
+        console.log(c)
+    </script>
+    </head>
+</body>
+
+</html>

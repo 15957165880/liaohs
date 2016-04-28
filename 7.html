@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>dom加载</title>
+</head>
+<body>
+
+<div id="id1">dsf</div>
+
+
+
+<script type="text/javascript">
+
+var a={a:2};
+var b={b:2};
+
+a.r=b;
+a.b=function(){
+	document.getElementById("id1").innerHTML=document.getElementById("id1").innerHTML+12
+}
+b.r=a;
+
+console.log(a)
+console.log(b)
+
+</script>
+</head>
+</body>
+</html>

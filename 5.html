@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>dom加载</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+function ajQuery() {
+    this.name = 'jQuery';
+    this.sayName = function(){
+    	return this.name
+	}
+}
+var a = new ajQuery()
+var b = new ajQuery()
+var c = new ajQuery()
+
+
+
+function ajQuery1() {
+    this.name = 'jQuery'
+    this.aa = 'jQuery'
+}
+var a1 = new ajQuery1()
+console.log(a1)
+ajQuery1.prototype = {
+    sayName: function() {
+    return this.name
+    }
+}
+var a1 = new ajQuery1()
+var b1 = new ajQuery1()
+var c1 = new ajQuery1()
+console.log(a1)
+
+
+</script>
+</head>
+</body>
+</html>

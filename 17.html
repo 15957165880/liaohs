@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+
+// 男神的各项参数
+var NanShen = {
+    request: function(obj) {
+
+        if (Math.random() > 0.2) {
+            obj.success();
+        } else {
+            obj.error();
+        }
+    }
+};
+
+
+var Request = function(names, success) {
+    var index = 0, first = 0;
+    var request = function() {
+        if (names[index]) {
+            NanShen.request({
+                name: names[index],
+                success: function() {
+                    first = 0;
+                    console.log("成功拿下" + names[index]);
+                    index++;
+                    request();
+                },
+                error: function() {
+                    if (first == 1) {
+                        console.log("依旧没能拿下" + names[index] + "，求婚失败");    
+                        return;
+                    } else {
+                        console.log("没能拿下" + names[index] + "，再试一次");    
+                    }
+                    first = 1;
+                    request();    
+                }
+            });    
+        } else {
+            success();
+        }
+    };    
+    
+    request();
+};
+
+// Request(["岳父", "大伯", "大姑"], function() {
+//     NanShen.request({
+//         name: "女神",
+//         success: function() {
+//             console.log("女神同意，求婚成功！");
+//         },
+//         error: function() {
+//             console.log("女神不同意，求婚失败！");
+//         }
+//     });
+// });
+
+var nan={
+    req:function(obj){
+        if(Math.random()>.3){
+            obj.s();
+        }else{
+            obj.f();
+        }
+    }
+}
+
+
+var Req=function(names,s){
+    var i=0,first=0;
+    var req1=function(){
+        if(names[i]){
+            nan.req({
+                s:function(){
+                    first=0;
+                    console.log(names[i]+"_s")
+                    i++;
+                    req1()
+                },
+                f:function(){
+                    if(first==0){
+                        console.log(names[i]+"_f"+"继续")
+                        first++
+                        req1()
+                    }else{
+                        console.log(names[i]+"_f"+"彻底失败")
+                        return
+                    }
+                    
+                }
+            })
+        }else{
+            s()
+        }
+    }
+    req1()
+}
+
+Req(["岳父", "大伯", "大姑"],function(){
+    
+    nan.req({
+        name:"女神",
+        s:function(){
+            console.log(this.name+"_s")
+        },
+        f:function(){
+            console.log(this.name+"_f")
+        }
+    })
+})
+
+console.log("df")
+
+
+    </script>
+</body>
+
+</html>

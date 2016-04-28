@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+function printHello (ready) {
+    return new Promise(function (resolve, reject) {
+        if (ready) {
+            resolve("Hello");
+
+        } else {
+            reject("Good bye!");
+            
+        }
+        
+    });
+}
+
+function printWorld (message) {
+    
+    console.log("World");
+    return message+"World"
+
+}
+
+function printExclamation (message) {
+    console.log("!");
+    return message+"!"
+}
+
+printHello()
+    .then(
+        function(message){
+            console.log(message);
+            return message
+        }
+    )
+    .catch(
+        function(error){
+            console.log(error);
+            return error
+        }
+    )
+
+    .then(printWorld)
+    .then(printExclamation)
+    .then(
+        function(message){
+            console.log(message);
+            // return message
+        }
+    )
+printHello(true)
+    .then(
+        function(message){
+            console.log(message);
+            return message
+        }
+    )
+
+
+    .then(
+        function(message){
+            console.log(message);
+            // return message
+        }
+    )
+
+    var a=[1,2,3]
+    console.log(a.reverse())
+
+    var a=[0,1,2,3,4,5,6]
+    console.log(a.every(function(item,idex,array){
+
+        return item>2
+    }))
+    console.log(a.filter(function(item,index,array){
+         console.log(index)
+        return item>2
+    }).map(function(item){return item>5 }) )
+    console.log(a.some(function(item){
+        return item>2
+    }))
+    console.log(a.map(function(item){
+        return item>2
+    }))
+    </script>
+</body>
+
+</html>
